@@ -40,8 +40,8 @@ def create_checkout_session():
                     "quantity": 1,
                 }
             ],
-            metadata={"email": str(email)},  # Convert `email` to a string to prevent errors
-        )  # ✅ Ensure this closing parenthesis exists
+            metadata={"email": str(email) if email else "unknown"},  # Fix metadata issue
+        )
 
         return jsonify({"checkout_url": session.url})
 
