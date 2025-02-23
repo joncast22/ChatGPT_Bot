@@ -1,3 +1,4 @@
+pip --upgrade pip
 flask
 openai
 stripe
@@ -10,3 +11,4 @@ email
 requests
 cryptography
 pyOpenSSL
+certifi
