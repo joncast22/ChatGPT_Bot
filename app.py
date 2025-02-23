@@ -50,11 +50,12 @@ session = stripe.checkout.Session.create(
     ],
     metadata={"email": str(email) if email else "unknown"},  # Fix metadata issue
 )
+
 @app.route("/create-checkout-session", methods=["POST"])
 def create_checkout_session():
     try:
         data = request.json  # Get the request body
-        email = data.get("email", None)  # Extract email
+        email = data.get("email")  # Extract email from JSON
 
         if not email:
             return jsonify({"error": "Email is required"}), 400
@@ -74,11 +75,10 @@ def create_checkout_session():
                     "quantity": 1,
                 }
             ],
-            metadata={"email": email},  # Fix: Now `email` is always defined
+            metadata={"email": str(email)},  # Convert email to string to prevent errors
         )
 
         return jsonify({"checkout_url": session.url})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
