@@ -8,3 +8,5 @@ twilio
 smtplib
 email
 requests
+cryptography
+pyOpenSSL
