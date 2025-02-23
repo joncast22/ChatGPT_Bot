@@ -1,12 +1,9 @@
 flask
+gunicorn
 openai
 stripe
-secrets
-sqlite3
 python-dotenv
 twilio
-smtplib
-email
 requests
 cryptography
 pyOpenSSL
